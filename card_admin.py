@@ -33,7 +33,12 @@ if __name__ == '__main__':
             if not ok:
                 print("Error reseting card")
                 continue
-            ok =  card.write_id(input("Card ID (16 chars): "))
+            id_str = input("Card ID (16 chars): ").ljust(16)
+            if len(id_str) > 16:
+                print("ID must be shorter than 16 chars")
+                continue
+
+            ok = card.write_id(id_str)
             if not ok:
                 print("Invalid ID")
                 continue
